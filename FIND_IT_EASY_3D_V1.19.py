@@ -414,5 +414,20 @@ for ii in range(N_blocks):
 # Close txt-file
 f.close()
 
+##----- 7. WRITE TXT FILE COMPATIBLE WITH 3DEC VERSION 5.2 -----##
+
+# Open txt-file
+g = open("3DECInputFile.txt", "w+")
+
+# Fill the input file
+# Take two opposite vertices among the 8 present in each block
+g.write("new\n")
+for ii in range(N_blocks):
+    g.write("poly brick\t"+str(BlockVertex[ii][0][0])+","+str(BlockVertex[ii][6][0])+"\t"+str(BlockVertex[ii][0][1])+","+str(BlockVertex[ii][6][1])+"\t"+str(BlockVertex[ii][0][2])+","+str(BlockVertex[ii][6][2])+"\n")
+g.write("plot create plot Blocks\nplot block")
+
+# Close txt-file
+g.close()
+
 # Debugging end point
 fine = 1
